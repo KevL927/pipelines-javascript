@@ -43,4 +43,6 @@ steps:
   inputs:
     azureSubscription: $(serviceConnectionToAzure)
     WebAppName: $(appName)
-    Package: $(System.ArtifactsDirectory)/**/*.zip
+    Package: '$(System.DefaultWorkingDirectory)'
+    GenerateWebConfig: true
+    WebConfigParameters: '-Handler iisnode -NodeStartFile server.js -appType node'
