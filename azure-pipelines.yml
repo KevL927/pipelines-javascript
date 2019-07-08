@@ -3,6 +3,10 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
+variables:
+  serviceConnectionToAzure: AzureDevOps
+  appName: businesstest1
+
 trigger:
 - master
 
@@ -34,3 +38,9 @@ steps:
   inputs:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
     includeRootFolder: false
+
+- task: AzureRmWebAppDeployment@3
+  inputs:
+    azureSubscription: $(serviceConnectionToAzure)
+    WebAppName: $(appName)
+    Package: $(System.ArtifactsDirectory)/**/*.zip
