@@ -5,7 +5,7 @@
 
 variables:
   serviceConnectionToAzure: AzureDevOps
-  appName: businesstest1
+  appName: businessplan1
 
 trigger:
 - master
